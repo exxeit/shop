@@ -60,3 +60,22 @@ export const isFav = async (item, user) => {
     const {data} = await $host.post('api/fav/is_fav/', {itemId: item, userId: user})
     return data.isFavorite
 }
+
+export const updatePrice = async (id, newPrice) => {
+    const { data } = await $host.put(`api/device/price/${id}`, { price: newPrice });
+    return data;
+};
+
+export const updateName = async (id, newName) => {
+    const { data } = await $host.put(`api/device/name/${id}`, { name: newName });
+    return data;
+};
+
+export const updatePhoto = async (id, photo) => {
+    const formData = new FormData();
+    formData.append('photo', photo);
+    const {data} = await $host.patch(`api/device/photo/${id}`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return data;
+}

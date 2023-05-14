@@ -18,3 +18,16 @@
     justify-content: center;
     cursor: pointer;
 }
+
+.save_btn {
+    cursor: pointer;
+    height: 30px;
+    width: 130px;
+    border: 1px solid lightskyblue;
+    border-radius: 5px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    background-color: steelblue;
+    color: #fff;
+}
