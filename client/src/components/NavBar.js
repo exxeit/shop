@@ -45,10 +45,10 @@ const NavBar = observer(() => {
                         <div onClick={() => history.push(USER_PAGE_ROUTE)}>
                             <Image
 
-                                style={{ maxHeight: 37, maxWidth: 37, cursor: "pointer" }}
+                                style={{ maxHeight: 37, maxWidth: 37, minHeight: 37, minWidth: 37, cursor: "pointer" }}
                                 src={
-                                    user.user.photo
-                                        ? user.user.photo
+                                    user.photo
+                                        ? process.env.REACT_APP_API_URL + user.photo
                                         : `https://ui-avatars.com/api/?background=random&name=${user.email}&size=50`
                                 }
                                 roundedCircle

@@ -18,3 +18,13 @@ export const check = async () => {
         localStorage.setItem('token', data.token)
         return jwt_decode(data.token)
 }
+
+export const changePhoto = async (photo) => {
+    const formData = new FormData();
+    formData.append('photo', photo);
+    const {data} = await $authHost.patch('api/user/change', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+    });
+
+    return {'user': data.user}
+}

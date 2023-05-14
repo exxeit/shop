@@ -42,3 +42,21 @@ export const deleteDevice = async (id) => {
     const {data} = await $host.post('api/device/delete/' + id)
     return data;
 }
+
+export const addToFav = async (item, user) => {
+    await $host.post('api/fav/add_to_fav/', {itemId: item, userId: user})
+}
+
+export const delToFav = async (item, user) => {
+    await $host.post('api/fav/del_to_fav/', {itemId: item, userId: user})
+}
+
+export const myFav = async (id) => {
+    const {data} = await $host.post('api/fav/get_all/', {userId: id})
+    return data
+}
+
+export const isFav = async (item, user) => {
+    const {data} = await $host.post('api/fav/is_fav/', {itemId: item, userId: user})
+    return data.isFavorite
+}

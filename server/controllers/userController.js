@@ -1,5 +1,7 @@
 const ApiError = require('../error/ApiError');
 const bcrypt = require('bcrypt')
+const uuid = require('uuid')
+const path = require('path')
 const jwt = require('jsonwebtoken')
 const {User, Basket} = require('../models/models')
 
@@ -45,6 +47,30 @@ class UserController {
     async check(req, res, next) {
         const token = generateJwt(req.user.id, req.user.email, req.user.role)
         return res.json({token})
+    }
+
+    async setPhoto(req, res, next) {
+        const {photo} = req.files
+        if (!photo) {
+            return next(ApiError.badRequest('Файл не найден'))
+        }
+
+        if (!photo.mimetype.startsWith('image/')) {
+            return next(ApiError.badRequest('Можно загружать только изображения'))
+        }
+
+        let fileName = uuid.v4() + ".jpg"
+        photo.mv(path.resolve(__dirname, '..', 'static', fileName))
+
+        try {
+            const updatedUser = await User.update(
+                { photo: fileName },
+                { where: { id: req.user.id } }
+            )
+            return res.json(updatedUser)
+        } catch (e) {
+            return next(ApiError.internal('Не удалось загрузить фото'))
+        }
     }
 }
 

@@ -34,4 +34,8 @@ export default class UserStore {
     get photo() {
         return this._user.photo
     }
+
+    get id() {
+        return this._user.id
+    }
 }
