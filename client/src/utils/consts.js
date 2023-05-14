@@ -6,3 +6,5 @@ export const BASKET_ROUTE = '/basket'
 export const DEVICE_ROUTE = '/device'
 export const ORDER_MAKE = '/order/make'
 export const ABOUT_ROUTE = '/about'
+
+export const USER_PAGE_ROUTE = '/me'

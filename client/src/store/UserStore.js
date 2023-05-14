@@ -27,4 +27,11 @@ export default class UserStore {
     get user() {
         return this._user
     }
+
+    get email() {
+        return this._user.email
+    }
+    get photo() {
+        return this._user.photo
+    }
 }

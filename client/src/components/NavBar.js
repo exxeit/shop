@@ -3,7 +3,7 @@ import {Context} from "../index";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import {NavLink} from "react-router-dom";
-import {ABOUT_ROUTE, ADMIN_ROUTE, DEVICE_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import {ABOUT_ROUTE, ADMIN_ROUTE, DEVICE_ROUTE, LOGIN_ROUTE, SHOP_ROUTE, USER_PAGE_ROUTE} from "../utils/consts";
 import {Button, Image} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
 import Container from "react-bootstrap/Container";
@@ -19,7 +19,6 @@ const NavBar = observer(() => {
         user.setIsAuth(false)
         localStorage.removeItem('token')
     }
-
 
     return (
 
@@ -43,7 +42,18 @@ const NavBar = observer(() => {
                         >
                             Выйти
                         </Button>
+                        <div onClick={() => history.push(USER_PAGE_ROUTE)}>
+                            <Image
 
+                                style={{ maxHeight: 37, maxWidth: 37, cursor: "pointer" }}
+                                src={
+                                    user.user.photo
+                                        ? user.user.photo
+                                        : `https://ui-avatars.com/api/?background=random&name=${user.email}&size=50`
+                                }
+                                roundedCircle
+                            />
+                        </div>
                     </Nav>
                     :
                     <Nav className="ml-auto" style={{color: '#eee9fa'}}>

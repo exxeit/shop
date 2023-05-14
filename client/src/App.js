@@ -12,7 +12,7 @@ const App = observer(() => {
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         check().then(data => {
-            user.setUser(true)
+            user.setUser(data)
             data.role == "ADMIN" ? user.setIsAdmin(true) : user.setIsAdmin(false)
             user.setIsAuth(true)
         }).catch((e) => {console.log(e)}).finally(() => setLoading(false))
