@@ -1,0 +1,54 @@
+version: '3.8'
+services:
+  client:
+    build: ./client
+    container_name: client_frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./client:/app
+#      - ./client/node_modules
+    stdin_open: true
+    tty: true
+
+  api:
+    build: ./server
+    container_name: api_backend
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./server:/server
+#      - ./server/node_modules
+    environment:
+      - PG_DB=ONline_store
+      - PG_USER=postgres
+      - PG_PASSWORD=1111
+      - PG_HOST=db
+    depends_on:
+      - db
+
+  db:
+    container_name: api_db
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=ONline_store
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1111
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    ports:
+      - "8080:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=12345678
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
+
+volumes:
+  db_data: { }
