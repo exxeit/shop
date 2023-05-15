@@ -2,7 +2,17 @@ import React, {useContext, useEffect, useState} from 'react';
 import {Button, Card, Col, Container, Form, Image, Row} from "react-bootstrap";
 
 import {useHistory, useParams} from 'react-router-dom'
-import {addToFav, delToFav, fetchOneDevice, isFav, updateName, updatePhoto, updatePrice} from "../http/deviceAPI";
+import {
+    addInfo,
+    addToFav,
+    deleteInfo,
+    delToFav,
+    fetchOneDevice,
+    isFav, postInfo,
+    updateName,
+    updatePhoto,
+    updatePrice
+} from "../http/deviceAPI";
 import {ORDER_MAKE, SHOP_ROUTE} from "../utils/consts";
 import {Context} from "../index";
 import {deleteDevice} from "../http/deviceAPI";
@@ -12,10 +22,13 @@ import goldStar from '../assets/goldStar.png';
 import {changePhoto} from "../http/userAPI";
 
 const DevicePage = () => {
+    const [addInfo, setAddInfo] = useState(false)
     const [isFavorite, setIsFavorite] = useState(false);
+
     const [editPrice, setEditPrice] = useState(false)
     const [editName, setEditName] = useState(false)
     const [file, setFile] = useState(null)
+
     const [saveButtonDisabled, setSaveButtonDisabled] = useState(true)
 
     const history = useHistory()
@@ -23,8 +36,12 @@ const DevicePage = () => {
     const [isAdmin, setIsAdmin] = useState(user.isAdmin)
     // const [isAdmin, setIsAdmin] = useState(false)
     const [device, setDevice] = useState({info: []})
+
     const [newPrice, setNewPrice] = useState(device.price);
     const [newName, setNewName] = useState(device.name);
+    const [newInfoTitle, setNewInfoTitle] = useState("")
+    const [newInfoDescription, setNewInfoDescription] = useState("")
+
     const {id} = useParams()
     const toggleFavorite = async () => {
         if (isFavorite) {
@@ -43,6 +60,14 @@ const DevicePage = () => {
     const handleNameChange = (event) => {
         setNewName(event.target.value);
     };
+
+    const handleInfoTitleChange = (event) => {
+        setNewInfoTitle(event.target.value)
+    }
+
+    const handleInfoDescriptionChange = (event) => {
+        setNewInfoDescription(event.target.value)
+    }
 
     useEffect(async () => {
         fetchOneDevice(id).then(data => setDevice(data))
@@ -92,7 +117,24 @@ const DevicePage = () => {
     }
 
     const savePhoto = async () => {
+        if (saveButtonDisabled) return null
         let data = await updatePhoto(id ,file)
+        fetchOneDevice(id).then(data => setDevice(data))
+    }
+
+    const del_info = async (infoId) => {
+        const data = await deleteInfo(infoId)
+        fetchOneDevice(id).then(data => setDevice(data))
+    }
+
+    const handleSubmitInfo = async () => {
+        if (!newInfoTitle || !newInfoDescription) {
+            return null
+        }
+        setAddInfo(false)
+        const data = await postInfo(id, newInfoTitle, newInfoDescription)
+        setNewInfoTitle("")
+        setNewInfoDescription("")
         fetchOneDevice(id).then(data => setDevice(data))
     }
 
@@ -147,12 +189,33 @@ const DevicePage = () => {
             <Row className="d-flex flex-column m-3">
                 <h1>Характеристики</h1>
                 {device.info.map((info, index) =>
-                    <Row key={info.id} style={{background: index % 2 === 0 ? 'seagreen' : 'dark', padding: 8}}>
-                        {info.title}: {info.description}
+                    <Row style={{background: index % 2 === 0 ? 'seagreen' : 'dark', padding: 8}}>
+                        <div className="info_row_container">
+                            <div className="ingo_text">{info.title}: {info.description}</div>
+                            <div className="delete_ingo_btn" onClick={() => del_info(info.id)}>x</div>
+                        </div>
                     </Row>
+                    // key={info.id} нет тк при удалении одинаковые цвета подряд
                 )}
             </Row>
-            { user.isAdmin ? <button className='btn btn-danger' onClick={() => click()}>Удалить</button> : ""}
+            <div className="device_buttons_container">
+                {
+                    addInfo && <div className="add_info_container">
+                        <div>Title: <input value={newInfoTitle} onChange={handleInfoTitleChange} type={"text"}/></div>
+                        <div>Description: <input value={newInfoDescription} onChange={handleInfoDescriptionChange} type={"text"}/></div>
+                        <div
+                            className="save_btn"
+                            onClick={handleSubmitInfo}
+                            disabled={!newInfoTitle || !newInfoDescription}
+                            style={{ opacity: newInfoTitle && newInfoDescription ? 1 : 0.5 }}
+                        >
+                            <p>Save</p>
+                        </div>
+                    </div>
+                }
+                { (user.isAdmin  && !addInfo) && <button className='btn btn-primary' onClick={() => setAddInfo(true)}>Добавить характеристику</button> }
+                { user.isAdmin ? <button className='btn btn-danger' onClick={() => click()}>Удалить</button> : ""}
+            </div>
         </Container>
     );
 };

@@ -79,3 +79,11 @@ export const updatePhoto = async (id, photo) => {
     });
     return data;
 }
+
+export const deleteInfo = async (id) => {
+    const data = await $host.delete(`api/info/${id}`)
+}
+
+export const postInfo = async (id, title, description) => {
+    const data = await $host.post('api/info/', {id: id, title: title, description: description})
+}

@@ -37,6 +37,7 @@ const UserPage = () => {
     }
 
     const savePhoto = async () => {
+        if (saveButtonDisabled) return null
         let data = await changePhoto(file)
         user.setUser(data)
     }
