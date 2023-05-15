@@ -4,7 +4,7 @@ import {useHistory,} from "react-router-dom";
 import {Context} from "../index";
 import {fetchOneDevice, myFav} from "../http/deviceAPI";
 import {DEVICE_ROUTE} from "../utils/consts";
-import {changePhoto} from "../http/userAPI";
+import {changePhoto, getMe} from "../http/userAPI";
 
 
 
@@ -38,7 +38,8 @@ const UserPage = () => {
 
     const savePhoto = async () => {
         if (saveButtonDisabled) return null
-        let data = await changePhoto(file)
+        await changePhoto(file)
+        const data = await getMe()
         user.setUser(data)
     }
 

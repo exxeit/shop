@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Context} from "../index";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -8,6 +8,7 @@ import {Button, Image} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
 import Container from "react-bootstrap/Container";
 import {useHistory} from 'react-router-dom'
+import {getMe} from "../http/userAPI";
 
 
 
@@ -19,6 +20,12 @@ const NavBar = observer(() => {
         user.setIsAuth(false)
         localStorage.removeItem('token')
     }
+    useEffect(async () => {
+        const data = await getMe()
+        user.setUser(data)
+    }, [])
+
+    console.log(user.photo)
 
     return (
 

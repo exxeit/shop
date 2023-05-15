@@ -4,13 +4,13 @@ import AppRouter from "./components/AppRouter";
 import NavBar from "./components/NavBar";
 import {observer} from "mobx-react-lite";
 import {Context} from "./index";
-import {check} from "./http/userAPI";
+import {check, getMe} from "./http/userAPI";
 import {Spinner} from "react-bootstrap";
 
 const App = observer(() => {
     const {user} = useContext(Context)
     const [loading, setLoading] = useState(true)
-    useEffect(() => {
+    useEffect( async () => {
         check().then(data => {
             user.setUser(data)
             data.role == "ADMIN" ? user.setIsAdmin(true) : user.setIsAdmin(false)

@@ -72,6 +72,12 @@ class UserController {
             return next(ApiError.internal('Не удалось загрузить фото'))
         }
     }
+
+    async getMe(req, res, next) {
+        const user = req.user
+        const data = await User.findOne({where: {id: user.id}})
+        res.json({data})
+    }
 }
 
 module.exports = new UserController()
