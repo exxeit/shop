@@ -1,7 +1,6 @@
 import React from 'react';
 import {Card, Col} from "react-bootstrap";
 import Image from "react-bootstrap/Image";
-import star from '../assets/star.png'
 import {useHistory} from "react-router-dom"
 import {DEVICE_ROUTE} from "../utils/consts";
 
@@ -12,7 +11,6 @@ const DeviceItem = ({device}) => {
 
             <div className="card mb-4 box-shadow">
                 <Image style={{maxHeight:300}} src={process.env.REACT_APP_API_URL + device.img}/>
-
 
 
                 <div className="card-body">

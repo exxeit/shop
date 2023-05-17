@@ -7,7 +7,7 @@ import DeviceItem from "./DeviceItem";
 const DeviceList = observer(() => {
     const [email, setEmail] = useState('');
     const {device} = useContext(Context)
-    console.log(device)
+
     return (
         <Row className="d-flex">
             <div className="input-group">

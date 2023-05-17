@@ -10,6 +10,8 @@ const CreateDevice = observer(({show, onHide}) => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [file, setFile] = useState(null)
+    const [file2, setFile2] = useState(null)
+    const [file3, setFile3] = useState(null)
     const [info, setInfo] = useState([])
 
     useEffect(() => {
@@ -30,12 +32,20 @@ const CreateDevice = observer(({show, onHide}) => {
     const selectFile = e => {
         setFile(e.target.files[0])
     }
+    const selectFile2 = e => {
+        setFile2(e.target.files[0])
+    }
+    const selectFile3 = e => {
+        setFile3(e.target.files[0])
+    }
 
     const addDevice = () => {
         const formData = new FormData()
         formData.append('name', name)
         formData.append('price', `${price}`)
         formData.append('img', file)
+        formData.append('img2', file2)
+        formData.append('img3', file3)
         formData.append('brandId', device.selectedBrand.id)
         formData.append('typeId', device.selectedType.id)
         formData.append('info', JSON.stringify(info))
@@ -89,16 +99,44 @@ const CreateDevice = observer(({show, onHide}) => {
                     />
                     <Form.Control
                         value={price}
-                        onChange={e => setPrice(Number(e.target.value))}
+                        onChange={(e) => {
+                            let inputValue = e.target.value;
+                            const parsedValue = parseInt(inputValue, 10);
+
+                            // Проверка на валидность числа
+                            if (!isNaN(parsedValue) && parsedValue >= 0) {
+                                // Удаление ведущих нулей, кроме случая простого "0"
+                                if (inputValue.length > 1 && inputValue.charAt(0) === '0') {
+                                    inputValue = parsedValue.toString();
+                                }
+
+                                setPrice(inputValue);
+                            }
+                        }}
                         className="mt-3"
                         placeholder="Введите стоимость изделия"
                         type="number"
                     />
-                    <Form.Control
-                        className="mt-3"
-                        type="file"
-                        onChange={selectFile}
-                    />
+                    <div className="device_photos_inputs_container">
+                        <p>Первое фото:</p>
+                        <Form.Control
+                            className="mt-3"
+                            type="file"
+                            onChange={selectFile}
+                        />
+                        <p>Второе фото:</p>
+                        <Form.Control
+                            className="mt-3"
+                            type="file"
+                            onChange={selectFile2}
+                        />
+                        <p>Третье фото:</p>
+                        <Form.Control
+                            className="mt-3"
+                            type="file"
+                            onChange={selectFile3}
+                        />
+                    </div>
                     <hr/>
                     <Button
                         variant={"outline-light"}

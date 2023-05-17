@@ -23,6 +23,9 @@ const Device = sequelize.define('device', {
     price: {type: DataTypes.INTEGER, allowNull: false},
     rating: {type: DataTypes.INTEGER, defaultValue: 0},
     img: {type: DataTypes.STRING, allowNull: false},
+    img2: {type: DataTypes.STRING, allowNull: true},
+    img3: {type: DataTypes.STRING, allowNull: true},
+
 })
 
 const Type = sequelize.define('type', {
@@ -62,6 +65,7 @@ const Favorite = sequelize.define('favorite', {
     userId: {type: DataTypes.INTEGER, allowNull: false},
     deviceId: {type: DataTypes.INTEGER, allowNull: false}
 });
+
 
 User.hasOne(Basket)
 Basket.belongsTo(User)

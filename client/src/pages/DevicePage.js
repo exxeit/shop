@@ -3,7 +3,6 @@ import {Button, Card, Col, Container, Form, Image, Row} from "react-bootstrap";
 
 import {useHistory, useParams} from 'react-router-dom'
 import {
-    addInfo,
     addToFav,
     deleteInfo,
     delToFav,
@@ -19,11 +18,12 @@ import {deleteDevice} from "../http/deviceAPI";
 
 import star from '../assets/star.png';
 import goldStar from '../assets/goldStar.png';
-import {changePhoto} from "../http/userAPI";
+import Slider from "../components/Slider";
 
 const DevicePage = () => {
     const [addInfo, setAddInfo] = useState(false)
     const [isFavorite, setIsFavorite] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('1');
 
     const [editPrice, setEditPrice] = useState(false)
     const [editName, setEditName] = useState(false)
@@ -73,7 +73,6 @@ const DevicePage = () => {
         fetchOneDevice(id).then(data => setDevice(data))
         let res = await isFav(id, user.id)
         setIsFavorite(res)
-
     }, [])
 
     const click = async () => {
@@ -118,7 +117,7 @@ const DevicePage = () => {
 
     const savePhoto = async () => {
         if (saveButtonDisabled) return null
-        let data = await updatePhoto(id ,file)
+        let data = await updatePhoto(id ,file, selectedOption)
         fetchOneDevice(id).then(data => setDevice(data))
     }
 
@@ -138,15 +137,55 @@ const DevicePage = () => {
         fetchOneDevice(id).then(data => setDevice(data))
     }
 
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+    }
+
     return (
         <Container className="mt-3">
             <Row>
                 <Col md={7}>
-                    <Image style={{maxHeight:300}} src={process.env.REACT_APP_API_URL + device.img}/>
+                    <Slider device={device}/>
                     {
                         isAdmin
                             ? <div>
                                 <h4>Изменить фото:</h4>
+                                <Form>
+                                    {['radio'].map((type) => (
+                                        <div key="inline-type" className="mb-3">
+                                            <Form.Check
+                                                inline
+                                                label="1"
+                                                name="group1"
+                                                type="radio"
+                                                id="inline-type-1"
+                                                value="1"
+                                                checked={selectedOption === '1'}
+                                                onChange={handleOptionChange}
+                                            />
+                                            <Form.Check
+                                                inline
+                                                label="2"
+                                                name="group1"
+                                                type="radio"
+                                                id="inline-type-2"
+                                                value="2"
+                                                checked={selectedOption === '2'}
+                                                onChange={handleOptionChange}
+                                            />
+                                            <Form.Check
+                                                inline
+                                                label="3"
+                                                name="group1"
+                                                type="radio"
+                                                id="inline-type-3"
+                                                value="3"
+                                                checked={selectedOption === '3'}
+                                                onChange={handleOptionChange}
+                                            />
+                                        </div>
+                                    ))}
+                                </Form>
                                 <Form.Control
                                 className="mt-3"
                                 type="file"

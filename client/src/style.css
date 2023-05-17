@@ -124,3 +124,30 @@
     padding: 20px;
     background-color: rgba(104, 255, 28, 0.5);
 }
+
+.device_slider {
+    max-width: 400px;
+    max-height: 400px;
+    min-width: 400px;
+    min-height: 400px;
+}
+
+.device_slider img {
+    max-width: 400px;
+    max-height: 400px;
+    min-width: 400px;
+    min-height: 400px;
+}
+
+.carousel-control-next-icon {
+    background-image: url("https://img.icons8.com/plasticine/100/arrow.png") !important;
+}
+
+.carousel-control-prev-icon {
+    background-image: url("https://img.icons8.com/plasticine/100/arrow.png") !important;
+    transform: rotate(180deg);
+}
+
+.device_photos_inputs_container p{
+    margin: 5px 0;
+}

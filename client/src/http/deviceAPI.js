@@ -71,10 +71,10 @@ export const updateName = async (id, newName) => {
     return data;
 };
 
-export const updatePhoto = async (id, photo) => {
+export const updatePhoto = async (id, photo, num) => {
     const formData = new FormData();
     formData.append('photo', photo);
-    const {data} = await $host.patch(`api/device/photo/${id}`, formData, {
+    const {data} = await $host.patch(`api/device/photo/${id}?item=${num}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
     });
     return data;

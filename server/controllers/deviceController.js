@@ -7,10 +7,24 @@ class DeviceController {
     async create(req, res, next) {
         try {
             let {name, price, brandId, typeId, info} = req.body
-            const {img} = req.files
+            const {img, img2, img3} = req.files
+
+            let fileName2 = null, fileName3 = null
+
             let fileName = uuid.v4() + ".jpg"
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
-            const device = await Device.create({name, price, brandId, typeId, img: fileName});
+
+            if(img2) {
+                fileName2 = uuid.v4() + ".jpg"
+                img2.mv(path.resolve(__dirname, '..', 'static', fileName2))
+            }
+
+            if(img3) {
+                fileName3 = uuid.v4() + ".jpg"
+                img3.mv(path.resolve(__dirname, '..', 'static', fileName3))
+            }
+
+            const device = await Device.create({name, price, brandId, typeId, img: fileName, img2: fileName2, img3: fileName3});
 
             if (info) {
                 info = JSON.parse(info)
@@ -124,7 +138,7 @@ class DeviceController {
     async setPhoto (req, res, next) {
         const {id} = req.params
         const {photo} = req.files
-        console.log(photo)
+        const { item } = req.query;
 
         if (!photo) {
             return next(ApiError.badRequest('Файл не найден'))
@@ -134,16 +148,33 @@ class DeviceController {
             return next(ApiError.badRequest('Можно загружать только изображения'))
         }
 
+        let fieldName;
+        switch (item) {
+            case '1':
+                fieldName = 'img';
+                break;
+            case '2':
+                fieldName = 'img2';
+                break;
+            case '3':
+                fieldName = 'img3';
+                break;
+            default:
+                return next(ApiError.badRequest('Некорректное значение item'));
+        }
+
         let fileName = uuid.v4() + ".jpg"
         photo.mv(path.resolve(__dirname, '..', 'static', fileName))
 
         try {
-            const updatedDevice = await Device.update(
-                { img: fileName },
-                { where: { id: id } }
-            )
-            console.log(updatedDevice)
-            return res.json(updatedDevice)
+            const updateData = {};
+            updateData[fieldName] = fileName;
+
+            const updatedDevice = await Device.update(updateData, {
+                where: { id: id },
+            });
+
+            return res.json(updatedDevice);
         } catch (e) {
             return next(ApiError.internal('Не удалось загрузить фото'))
         }
