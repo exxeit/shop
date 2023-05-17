@@ -22,8 +22,10 @@ const Auth = observer(() => {
             let data;
             if (isLogin) {
                 data = await login(email, password);
+                user.setUser(data.user)
             } else {
                 data = await registration(email, password);
+                console.log(data)
             }
             user.setIsAuth(true)
             if (data.user.role == "ADMIN") {

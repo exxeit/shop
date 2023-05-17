@@ -23,7 +23,6 @@ const Reset = observer(() => {
     };
 
     const click = async () => {
-        setNoEmail(false)
         if(validateEmail(email)) {
             try {
                 const res = await sendResetEmail(email)
@@ -31,9 +30,10 @@ const Reset = observer(() => {
                     setSended(true)
                 }
             } catch {
-                setNoEmail(true)
+                if(!noEmail) setNoEmail(true)
             }
         } else {
+            setNoEmail(false)
             setWrongEmail(true)
         }
     }

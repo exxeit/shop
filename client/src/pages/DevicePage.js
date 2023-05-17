@@ -192,7 +192,7 @@ const DevicePage = () => {
                     <Row style={{background: index % 2 === 0 ? 'seagreen' : 'dark', padding: 8}}>
                         <div className="info_row_container">
                             <div className="ingo_text">{info.title}: {info.description}</div>
-                            <div className="delete_ingo_btn" onClick={() => del_info(info.id)}>x</div>
+                            {isAdmin && <div className="delete_ingo_btn" onClick={() => del_info(info.id)}>x</div>}
                         </div>
                     </Row>
                     // key={info.id} нет тк при удалении одинаковые цвета подряд
