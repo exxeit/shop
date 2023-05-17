@@ -54,7 +54,10 @@ const DevicePage = () => {
     };
 
     const handlePriceChange = (event) => {
-        setNewPrice(event.target.value);
+        const inputValue = event.target.value;
+        if (inputValue >= 0) {
+            setNewPrice(inputValue);
+        }
     };
 
     const handleNameChange = (event) => {
