@@ -4,12 +4,21 @@ const uuid = require('uuid')
 const path = require('path')
 const jwt = require('jsonwebtoken')
 const {User, Basket} = require('../models/models')
+const sendMail = require("../services/email")
 
 const generateJwt = (id, email, role) => {
     return jwt.sign(
         {id, email, role},
         process.env.SECRET_KEY,
         {expiresIn: '24h'}
+    )
+}
+
+const generateResetJwt = (id, email, role) => {
+    return jwt.sign(
+        {id, email, role},
+        process.env.SECRET_KEY,
+        {expiresIn: '5min'}
     )
 }
 
@@ -73,10 +82,39 @@ class UserController {
         }
     }
 
+    async changePassword(req, res, next) {
+        const {token, password} = req.body
+        try{
+            const decoded = jwt.verify(token, process.env.SECRET_KEY)
+            const updatedUser = await User.update(
+                { password: await bcrypt.hash(password, 5) },
+                { where: { id: decoded.id } }
+            )
+            return res.json(updatedUser)
+        } catch (TokenExpiredError){
+            return next(ApiError.internal('Время истекло'))
+        }
+    }
+
     async getMe(req, res, next) {
         const user = req.user
         const data = await User.findOne({where: {id: user.id}})
         res.json({data})
+    }
+
+    async sendReset(req, res, next) {
+        const {email} = req.body
+        const user = await User.findOne({where: {email}})
+        if (!user) {
+            return next(ApiError.internal('Пользователь не найден'))
+        }
+        try {
+            const token = generateResetJwt(user.id, user.email, user.role)
+            await sendMail(user.email, token)
+            return res.json({sended: true})
+        } catch (e) {
+            return res.json({sended: false})
+        }
     }
 }
 

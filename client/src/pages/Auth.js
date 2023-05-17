@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import {NavLink, useLocation, useHistory} from "react-router-dom";
-import {LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import {LOGIN_ROUTE, REGISTRATION_ROUTE, RESET_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {login, registration} from "../http/userAPI";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
@@ -25,8 +25,6 @@ const Auth = observer(() => {
             } else {
                 data = await registration(email, password);
             }
-            user.setUser(data.user)
-            console.log(data.user)
             user.setIsAuth(true)
             if (data.user.role == "ADMIN") {
                 user.setIsAdmin(true)
@@ -65,8 +63,9 @@ const Auth = observer(() => {
                     />
                     <Row className="d-flex justify-content-between mt-3 pl-3 pr-3">
                         {isLogin ?
-                            <div>
-                                Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйся!</NavLink>
+                            <div className="reg_container">
+                                <div>Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйся!</NavLink></div>
+                                <div>Забыли пароль? <NavLink to={RESET_ROUTE}>Восстановить!</NavLink></div>
                             </div>
                             :
                             <div>

@@ -89,3 +89,38 @@
     left: 100px;
     width: 400px;
 }
+
+.reg_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.pass_error {
+    margin-top: 10px;
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    background-color: rgba(255, 43, 43, 0.5);
+}
+
+.pass_success {
+    margin-top: 10px;
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    background-color: rgba(104, 255, 28, 0.5);
+}
+
+.info_email_sended {
+    display: flex;
+    justify-content: center;
+    border: 1px solid green;
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 20px;
+    background-color: rgba(104, 255, 28, 0.5);
+}

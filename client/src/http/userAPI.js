@@ -13,6 +13,11 @@ export const login = async (email, password) => {
     return { 'token': jwt_decode(data.token), 'user': data.user}
 }
 
+export const sendResetEmail = async (email) => {
+    const {data} = await $host.post('api/user/send_reset', {email})
+    return data
+}
+
 export const check = async () => {
     const {data} = await $authHost.get('api/user/auth' )
     localStorage.setItem('token', data.token)
@@ -22,6 +27,11 @@ export const check = async () => {
 export const getMe = async () => {
     const {data} = await $authHost.get('api/user/me' )
     return data.data
+}
+
+export const changePass = async (token, password) => {
+    const {data} = await $host.post('api/user/change_pass', {token, password})
+    return data.user
 }
 
 export const changePhoto = async (photo) => {
