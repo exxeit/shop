@@ -15,7 +15,7 @@ const createMailOptions = (email, token) => {
         from: "shopmakeyexample@zohomail.eu", // sender address
         to: email,
         subject: "Ссылка восстановления пароля.", // Subject line
-        html: `<p>Ссылка на восстановление пароля: <a href="http://localhost:3001/reset_password?token=${token}">Восстановить пароль</a></p>`, // plain text body
+        html: `<p>Ссылка на восстановление пароля: <a href="http://localhost:3000/reset_password?token=${token}">Восстановить пароль</a></p>`, // plain text body
     };
 }
 

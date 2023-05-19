@@ -139,15 +139,29 @@
     min-height: 400px;
 }
 
+.carousel-control-prev {
+    left: -50px;
+}
+
+
+.carousel-control-next {
+    right: -50px;
+}
+
 .carousel-control-next-icon {
     background-image: url("https://img.icons8.com/plasticine/100/arrow.png") !important;
+    transform: scale(1.5);
 }
 
 .carousel-control-prev-icon {
     background-image: url("https://img.icons8.com/plasticine/100/arrow.png") !important;
-    transform: rotate(180deg);
+    transform: scale(1.5) rotate(180deg);
 }
 
 .device_photos_inputs_container p{
     margin: 5px 0;
+}
+
+.disabled-btns .carousel-control-prev, .disabled-btns .carousel-control-next {
+    display: none;
 }
