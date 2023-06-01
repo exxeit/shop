@@ -55,7 +55,9 @@ const DevicePage = () => {
 
     const handlePriceChange = (event) => {
         const inputValue = event.target.value;
-        if (inputValue >= 0) {
+        const priceRegex = /^\d+(\.\d{1,2})?$/;
+
+        if (priceRegex.test(inputValue) || '') {
             setNewPrice(inputValue);
         }
     };

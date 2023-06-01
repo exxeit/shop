@@ -100,16 +100,10 @@ const CreateDevice = observer(({show, onHide}) => {
                     <Form.Control
                         value={price}
                         onChange={(e) => {
-                            let inputValue = e.target.value;
-                            const parsedValue = parseInt(inputValue, 10);
+                            const inputValue = e.target.value;
+                            const priceRegex = /^\d+(\.\d{1,2})?$/;
 
-                            // Проверка на валидность числа
-                            if (!isNaN(parsedValue) && parsedValue >= 0) {
-                                // Удаление ведущих нулей, кроме случая простого "0"
-                                if (inputValue.length > 1 && inputValue.charAt(0) === '0') {
-                                    inputValue = parsedValue.toString();
-                                }
-
+                            if (priceRegex.test(inputValue) || '') {
                                 setPrice(inputValue);
                             }
                         }}
