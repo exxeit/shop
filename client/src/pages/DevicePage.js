@@ -142,15 +142,16 @@ const DevicePage = () => {
         fetchOneDevice(id).then(data => setDevice(data))
     }
 
-    const handleChangeInfo = async () => {
+    const handleChangeInfo = async (info_id) => {
         if (!newInfoTitle || !newInfoDescription) {
             return null
         }
         setAddInfo(false)
-        const data = await changeInfo(id, newInfoTitle, newInfoDescription)
+        const data = await changeInfo(info_id, newInfoTitle, newInfoDescription)
         setNewInfoTitle("")
         setNewInfoDescription("")
         fetchOneDevice(id).then(data => setDevice(data))
+        setEditInfo(0)
     }
 
     const edit_info = async (infoId, title, desc) => {
@@ -158,6 +159,13 @@ const DevicePage = () => {
         setNewInfoDescription(desc)
         setAddInfo(false)
         setEditInfo(infoId)
+    }
+
+    const add_info = () => {
+        setAddInfo(true)
+        setNewInfoTitle("")
+        setNewInfoDescription("")
+        setEditInfo(0)
     }
 
     const handleOptionChange = (event) => {
@@ -250,7 +258,7 @@ const DevicePage = () => {
             </Row>
             <Row className="d-flex flex-column m-3">
                 <h1>Характеристики</h1>
-                {device.info.map((info, index) =>
+                {device.info.sort((a, b) => a.id - b.id).map((info, index) =>
                     <Row style={{background: index % 2 === 0 ? 'seagreen' : 'dark', padding: 8}}>
                         <div className="info_row_container">
                             <div className="ingo_text">
@@ -262,7 +270,7 @@ const DevicePage = () => {
                                                 <div>Description: <input value={newInfoDescription} onChange={handleInfoDescriptionChange} type={"text"}/></div>
                                                 <div
                                                     className="save_btn"
-                                                    onClick={handleChangeInfo}
+                                                    onClick={() => handleChangeInfo(info.id)}
                                                     disabled={!newInfoTitle || !newInfoDescription}
                                                     style={{ opacity: newInfoTitle && newInfoDescription ? 1 : 0.5 }}
                                                 >
@@ -294,7 +302,7 @@ const DevicePage = () => {
                         </div>
                     </div>
                 }
-                { (user.isAdmin  && !addInfo) && <button className='btn btn-primary' onClick={() => setAddInfo(true)}>Добавить характеристику</button> }
+                { (user.isAdmin  && !addInfo) && <button className='btn btn-primary' onClick={() => add_info()}>Добавить характеристику</button> }
                 { user.isAdmin ? <button className='btn btn-danger' onClick={() => click()}>Удалить</button> : ""}
             </div>
         </Container>

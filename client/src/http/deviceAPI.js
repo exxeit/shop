@@ -89,5 +89,5 @@ export const postInfo = async (id, title, description) => {
 }
 
 export const changeInfo = async (id, title, description) => {
-    const data = await $host.patch('api/info/', {id: id, title: title, description: description})
+    const data = await $host.patch(`api/info/${id}`, {id: id, title: title, description: description})
 }
