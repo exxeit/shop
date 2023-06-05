@@ -22,14 +22,14 @@ import {DefaultAllowlist as device} from "bootstrap/js/src/util/sanitizer";
             <Container>
                 <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
                     <div className="col-md-18 p-lg-2 mx-auto my-3">
-                        <h1 className="display-4 font-weight-normal text-success">Изделия из кожи</h1>
+                        <h1 className="display-4 font-weight-normal text-info">Изделия из кожи</h1>
                         <p className="lead font-weight-normal">Изделия из кожи - Наши дизайнеры регулярно посещают знаменитые выставки в городе Милан (Италия),
                             где перенимают международный опыт и черпают вдохновение для своих будущих коллекций. Стильные, созданные по традиционной технологии,
                             аксессуары из натуральной кожи обладают особым шармом.!</p>
 
-                        <p className="lead font-weight-normal text-success"> © Изделия из кожи - «Уникально. Индивидуально. Безупречно.»</p>
+                        <p className="lead font-weight-normal text-info"> © Изделия из кожи - «Уникально. Индивидуально. Безупречно.»</p>
 
-                        <Button variant={"outline-info"} onClick={() => history.push(DEVICE_ROUTE)}>Наша продукция!</Button>
+                        <Button variant={"outline-info"} onClick={() => history.push(DEVICE_ROUTE)}>К нашим изделиям!</Button>
                     </div>
                     <div className="product-device box-shadow d-none d-md-block"/>
                     <div className="product-device product-device-2 box-shadow d-none d-md-block"/>

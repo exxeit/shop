@@ -19,9 +19,9 @@ const Admin = () => {
                     <h4 className="my-0 font-weight-normal">Выбор типа</h4>
                 </div>
                 <div className="card-body">
-                    <h1 className="card-title pricing-card-title"> <small className="text-light">Тип</small></h1>
+                    <h1 className="card-title pricing-card-title"> <small className="text-dark">Тип</small></h1>
                     <ul className="list-unstyled mt-3 mb-4">
-                        <li>Добавьте тип изделия(например: портмоне, обложка на паспорт и т.д.)</li>
+                        <li>Например: портмоне, ключница и др.</li>
 
                     </ul>
                     <Button
@@ -39,9 +39,9 @@ const Admin = () => {
                     <h4 className="my-0 font-weight-normal">Выбор цвета</h4>
                 </div>
                 <div className="card-body">
-                    <h1 className="card-title pricing-card-title"> <small className="text-light">Цвет</small></h1>
+                    <h1 className="card-title pricing-card-title"> <small className="text-dark">Цвет</small></h1>
                     <ul className="list-unstyled mt-3 mb-4">
-                        <li>Добавьте цвет изделия(например: красный, чёрный и т.д.)</li>
+                        <li>Например: красный, чёрный и др.)</li>
 
                     </ul>
                     <Button
@@ -59,9 +59,9 @@ const Admin = () => {
                     <h4 className="my-0 font-weight-normal">Выбор наименования</h4>
                 </div>
                 <div className="card-body">
-                    <h1 className="card-title pricing-card-title"> <small className="text-light">Наименование</small></h1>
+                    <h1 className="card-title pricing-card-title"> <small className="text-dark">Наименование</small></h1>
                     <ul className="list-unstyled mt-3 mb-4">
-                        <li>Добавьте наименование изделия(например: портмоне "Royal Black", клатч "Алая Венеция" и т.д.)</li>
+                        <li>Например: Сумка "Royal Black" и др.)</li>
 
                     </ul>
                     <Button

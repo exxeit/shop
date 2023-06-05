@@ -10,14 +10,14 @@
     "username": "postgres",
     "password": "1111",
     "database": "ONline_store",
-    "host": "db",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "1111",
     "database": "ONline_store",
-    "host": "db",
+    "host": "localhost",
     "dialect": "postgres"
   }
 }

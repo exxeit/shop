@@ -25,7 +25,7 @@ const MakeOrderPage = () => {
         <Container>
             <div className="card text-center">
                 <div className="card-header">
-                    <h1 color="lightgreen">Оформление заказа</h1>
+                    <h1 color="lightgreen">Оставить заявку</h1>
                 </div>
                 <div className="card-body">
                     <Row className="d-flex flex-column m-3">
@@ -33,8 +33,8 @@ const MakeOrderPage = () => {
                         <Form className="card-title">
                             <Form.Control
                                 className="mt-3"
-                                placeholder="Уважаемый пользователь, укажите свою действительную эл. почту.
-                                 Вам вышлют ключ продукта для его активации после вашей оплаты."
+                                placeholder="Уважаемый пользователь, укажите свою эл. почту, указаную при регистрации.
+                                 С вами свяжется мастер в ближайшее время."
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
                             />
@@ -50,8 +50,8 @@ const MakeOrderPage = () => {
                         </Button>
 
                 </div>
-                <div className="card-footer text-success">
-                    © 2021 SuperSoft Co.
+                <div className="card-footer text-info">
+                    © 2023 LeatherCo.
                 </div>
             </div>
 

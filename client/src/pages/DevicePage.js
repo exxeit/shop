@@ -249,7 +249,7 @@ const DevicePage = () => {
                                 ? <><input style={{width: 300, height: 45}} value={newPrice} onChange={handlePriceChange} type="number" min="1"></input><div className="save_btn" onClick={handleSubmitPrice}><p>Save</p></div></>
                                 : <h3 onClick={() => isAdmin && setEditPrice(true)} color="skyblue">Цена: {newPrice} руб.</h3>
                         }
-                        <Button className='btn btn-outline-success text-lg-end' onClick={() => history.push(ORDER_MAKE + '/' + device.id)} variant={"outline-success"}>Оформить предзаказ</Button>
+                        <Button className='btn btn-outline-success text-lg-end' onClick={() => history.push(ORDER_MAKE + '/' + device.id)} variant={"outline-success"}>Оставить заявку</Button>
                         <div onClick={toggleFavorite}>
                             <img style={{maxHeight: 15}} src={isFavorite ? goldStar : star} alt="Favorite" />
                         </div>
@@ -290,15 +290,15 @@ const DevicePage = () => {
             <div className="device_buttons_container">
                 {
                     addInfo && <div className="add_info_container">
-                        <div>Title: <input value={newInfoTitle} onChange={handleInfoTitleChange} type={"text"}/></div>
-                        <div>Description: <input value={newInfoDescription} onChange={handleInfoDescriptionChange} type={"text"}/></div>
+                        <div>Хар-ка: <input value={newInfoTitle} onChange={handleInfoTitleChange} type={"text"}/></div>
+                        <div>Описание: <input value={newInfoDescription} onChange={handleInfoDescriptionChange} type={"text"}/></div>
                         <div
                             className="save_btn"
                             onClick={handleSubmitInfo}
                             disabled={!newInfoTitle || !newInfoDescription}
                             style={{ opacity: newInfoTitle && newInfoDescription ? 1 : 0.5 }}
                         >
-                            <p>Save</p>
+                            <p>Сохранить</p>
                         </div>
                     </div>
                 }
