@@ -10,6 +10,7 @@ import {changePhoto, getMe} from "../http/userAPI";
 
 const UserPage = () => {
     const {user} = useContext(Context)
+    const [photo, setPhoto] = useState(null)
     const history = useHistory()
     const [devices, setDevices] = useState([])
     const [file, setFile] = useState(null)
@@ -23,7 +24,13 @@ const UserPage = () => {
             devices.push(device);
         }
         setDevices(devices);
+        setPhoto(user.photo)
     }, [])
+
+    // useEffect(() => {
+    //     console.log(user.photo)
+    //     setPhoto(user.photo)
+    // }, [])
 
     const selectFile = e => {
         const selectedFile = e.target.files[0]
@@ -41,6 +48,7 @@ const UserPage = () => {
         await changePhoto(file)
         const data = await getMe()
         user.setUser(data)
+        setPhoto(data.photo)
     }
 
     return (
@@ -69,9 +77,9 @@ const UserPage = () => {
                 <div className="photo_container">
                     <Image
                         src={
-                            user.photo
-                                ? process.env.REACT_APP_API_URL + user.photo
-                                : `https://ui-avatars.com/api/?background=random&name=${user.email}&size=50`
+                            photo
+                                ? process.env.REACT_APP_API_URL + photo
+                                : `https://ui-avatars.com/api/?background=random&name=${user.email}&size=250`
                         }
 
                     />

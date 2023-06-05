@@ -26,7 +26,6 @@ const NavBar = observer(() => {
         user.setUser(data)
     }, [])
 
-    console.log(user.photo)
 
     return (
 
@@ -52,7 +51,6 @@ const NavBar = observer(() => {
                         </Button>
                         <div onClick={() => history.push(USER_PAGE_ROUTE)}>
                             <Image
-
                                 style={{ maxHeight: 37, maxWidth: 37, minHeight: 37, minWidth: 37, cursor: "pointer" }}
                                 src={
                                     user.photo
