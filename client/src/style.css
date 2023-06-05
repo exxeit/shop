@@ -166,3 +166,32 @@
 .disabled-btns .carousel-control-prev, .disabled-btns .carousel-control-next {
     display: none;
 }
+
+.profile_container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "profile_email photo_container"
+        "change_photo photo_container";
+}
+
+.profile_email {
+    grid-area: profile_email;
+    display: flex;
+    flex-direction: column;
+}
+
+.change_photo {
+    grid-area: change_photo;
+}
+
+.photo_container {
+    grid-area: photo_container;
+    min-height: 200px;
+}
+
+.photo_container img {
+    max-width: 400px;
+}

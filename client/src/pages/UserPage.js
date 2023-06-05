@@ -45,19 +45,37 @@ const UserPage = () => {
 
     return (
         <Container>
-            <h4>Изменить фото:</h4>
-            <Form.Control
-                className="mt-3"
-                type="file"
-                onChange={selectFile}
-            />
-            <div
-                className="save_photo"
-                onClick={savePhoto}
-                disabled={saveButtonDisabled}
-                style={{opacity: saveButtonDisabled ? 0.5 : 1}}
-            >
-                Сохранить фото
+            <div className="profile_container">
+                <div className="profile_email">
+                    <h3>Вы вошли в аккаунт под почтой:</h3>
+                    <p>{user.email}</p>
+                </div>
+                <div className="change_photo">
+                    <h4>Изменить фото:</h4>
+                    <Form.Control
+                        className="mt-3"
+                        type="file"
+                        onChange={selectFile}
+                    />
+                    <div
+                        className="save_photo"
+                        onClick={savePhoto}
+                        disabled={saveButtonDisabled}
+                        style={{opacity: saveButtonDisabled ? 0.5 : 1}}
+                    >
+                        Сохранить фото
+                    </div>
+                </div>
+                <div className="photo_container">
+                    <Image
+                        src={
+                            user.photo
+                                ? process.env.REACT_APP_API_URL + user.photo
+                                : `https://ui-avatars.com/api/?background=random&name=${user.email}&size=50`
+                        }
+
+                    />
+                </div>
             </div>
             <hr/>
             <h4>Избранные товары:</h4>
