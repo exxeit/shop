@@ -5,14 +5,14 @@ let transporter = nodemailer.createTransport({
     secure: true,
     port: 465,
     auth: {
-        user: "alexey.balahanov@innowise-group.com",
-        pass: "zWMs8FpWaZ!Qqwr",
+        user: "shopleather726@gmail.com",
+        pass: "leathershoppass",
     },
 });
 
 const createMailOptions = (email, token) => {
     return {
-        from: "shopmakeyexample@zohomail.eu", // sender address
+        from: "leatherhelp@zohomail.eu", // sender address
         to: email,
         subject: "Ссылка восстановления пароля.", // Subject line
         html: `<p>Ссылка на восстановление пароля: <a href="http://localhost:3000/reset_password?token=${token}">Восстановить пароль</a></p>`, // plain text body

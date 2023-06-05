@@ -3,7 +3,7 @@ import {Button, Card, Col, Container, Form, Image, Row} from "react-bootstrap";
 
 import {useHistory, useParams} from 'react-router-dom'
 import {
-    addToFav,
+    addToFav, changeInfo,
     deleteInfo,
     delToFav,
     fetchOneDevice,
@@ -27,6 +27,7 @@ const DevicePage = () => {
 
     const [editPrice, setEditPrice] = useState(false)
     const [editName, setEditName] = useState(false)
+    const [editInfo, setEditInfo] = useState(-1)
     const [file, setFile] = useState(null)
 
     const [saveButtonDisabled, setSaveButtonDisabled] = useState(true)
@@ -34,7 +35,6 @@ const DevicePage = () => {
     const history = useHistory()
     const {user} = useContext(Context)
     const [isAdmin, setIsAdmin] = useState(user.isAdmin)
-    // const [isAdmin, setIsAdmin] = useState(false)
     const [device, setDevice] = useState({info: []})
 
     const [newPrice, setNewPrice] = useState(device.price);
@@ -142,6 +142,24 @@ const DevicePage = () => {
         fetchOneDevice(id).then(data => setDevice(data))
     }
 
+    const handleChangeInfo = async () => {
+        if (!newInfoTitle || !newInfoDescription) {
+            return null
+        }
+        setAddInfo(false)
+        const data = await changeInfo(id, newInfoTitle, newInfoDescription)
+        setNewInfoTitle("")
+        setNewInfoDescription("")
+        fetchOneDevice(id).then(data => setDevice(data))
+    }
+
+    const edit_info = async (infoId, title, desc) => {
+        setNewInfoTitle(title)
+        setNewInfoDescription(desc)
+        setAddInfo(false)
+        setEditInfo(infoId)
+    }
+
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
     }
@@ -235,7 +253,26 @@ const DevicePage = () => {
                 {device.info.map((info, index) =>
                     <Row style={{background: index % 2 === 0 ? 'seagreen' : 'dark', padding: 8}}>
                         <div className="info_row_container">
-                            <div className="ingo_text">{info.title}: {info.description}</div>
+                            <div className="ingo_text">
+                                {
+                                    editInfo == info.id
+                                        ?  <>
+                                            <div className="add_info_container">
+                                                <div>Title: <input value={newInfoTitle} onChange={handleInfoTitleChange} type={"text"}/></div>
+                                                <div>Description: <input value={newInfoDescription} onChange={handleInfoDescriptionChange} type={"text"}/></div>
+                                                <div
+                                                    className="save_btn"
+                                                    onClick={handleChangeInfo}
+                                                    disabled={!newInfoTitle || !newInfoDescription}
+                                                    style={{ opacity: newInfoTitle && newInfoDescription ? 1 : 0.5 }}
+                                                >
+                                                    <p>Save</p>
+                                                </div>
+                                            </div>
+                                        </>
+                                        : <div onClick={() => edit_info(info.id, info.title, info.description)}>{info.title}: {info.description}</div>
+                                }
+                            </div>
                             {isAdmin && <div className="delete_ingo_btn" onClick={() => del_info(info.id)}>x</div>}
                         </div>
                     </Row>

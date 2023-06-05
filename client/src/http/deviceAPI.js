@@ -87,3 +87,7 @@ export const deleteInfo = async (id) => {
 export const postInfo = async (id, title, description) => {
     const data = await $host.post('api/info/', {id: id, title: title, description: description})
 }
+
+export const changeInfo = async (id, title, description) => {
+    const data = await $host.patch('api/info/', {id: id, title: title, description: description})
+}

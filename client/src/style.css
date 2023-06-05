@@ -78,6 +78,7 @@
     padding: 10px;
     margin-bottom: 10px;
     width: 100%;
+    min-width: 600px;
 }
 
 .add_info_container > div {

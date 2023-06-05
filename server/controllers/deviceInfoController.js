@@ -29,6 +29,25 @@ class DeviceInfoController {
             return next(error);
         }
     }
+
+    async change(req, res, next) {
+        const {id, title, description} = req.body;
+        try {
+            const updatedDevice = await DeviceInfo.findOne({where: {id: id}});
+
+            if (!updatedDevice) {
+                return res.status(404).json({message: 'Device not found'});
+            }
+
+            updatedDevice.title = title;
+            updatedDevice.description = description;
+            await updatedDevice.save();
+
+            return res.status(200).json({message: 'Device updated successfully', device: updatedDevice});
+        } catch (error) {
+            return next(error);
+        }
+    }
 }
 
 module.exports = new DeviceInfoController();

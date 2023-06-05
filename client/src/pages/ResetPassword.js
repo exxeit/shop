@@ -50,6 +50,7 @@ const ResetPassword = observer(() => {
                         placeholder="Введите новый пароль"
                         value={password}
                         onChange={e => setPassword(e.target.value)}
+                        type="password"
                     />
                     <Row className="d-flex justify-content-between mt-3 pl-3 pr-3">
                         {
