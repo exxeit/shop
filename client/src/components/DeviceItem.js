@@ -20,7 +20,7 @@ const DeviceItem = ({device}) => {
                             <button type="button" className="btn btn-sm btn-outline-info">Подробнее</button>
 
                         </div>
-                        <small className="text-success">{device.price} руб.</small>
+                        <small className="text-info">{device.price} руб.</small>
                     </div>
                 </div>
             </div>

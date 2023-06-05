@@ -65,6 +65,8 @@ const NavBar = observer(() => {
                     </Nav>
                     :
                     <Nav className="ml-auto" style={{color: '#eee9fa'}}>
+                        <Button variant={"outline-info"} onClick={() => history.push(ABOUT_ROUTE)}>О нас</Button>
+
                         <Button variant={"outline-info"} onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</Button>
                     </Nav>
 
