@@ -32,7 +32,7 @@ const NavBar = observer(() => {
         <Navbar bg="light" variant="dark">
             <Container>
 
-                <NavLink style={{color:'black'}} to={SHOP_ROUTE}>Изделия из кожи</NavLink>
+                <NavLink style={{color:'black'}} to={SHOP_ROUTE}>Изделия из кожи Comrade</NavLink>
 
                 {user.isAuth ?
                     <Nav className="ml-auto" style={{color: '#eee9fa'}}>

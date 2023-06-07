@@ -10,7 +10,7 @@ const DeviceItem = ({device}) => {
         <Col md={6} className={"mt-3"} onClick={() => history.push(DEVICE_ROUTE + '/' + device.id)}>
 
             <div className="card mb-4 box-shadow">
-                <Image style={{maxHeight:300}} src={process.env.REACT_APP_API_URL + device.img}/>
+                <Image style={{objectFit:"cover", maxHeight:370}} src={process.env.REACT_APP_API_URL + device.img}/>
 
 
                 <div className="card-body">

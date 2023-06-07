@@ -21,7 +21,7 @@ const CreateType = ({show, onHide}) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Добавить наименование изделия
+                    Добавить тип изделия
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -29,7 +29,7 @@ const CreateType = ({show, onHide}) => {
                     <Form.Control
                         value={value}
                         onChange={e => setValue(e.target.value)}
-                        placeholder={"Введите наименование изделия"}
+                        placeholder={"Укажите тип изделия"}
                     />
                 </Form>
             </Modal.Body>

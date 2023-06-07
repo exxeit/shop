@@ -22,78 +22,76 @@ import {DefaultAllowlist as device} from "bootstrap/js/src/util/sanitizer";
             <Container>
                 <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
                     <div className="col-md-18 p-lg-2 mx-auto my-3">
-                        <h1 className="display-4 font-weight-normal text-info">Изделия из кожи</h1>
-                        <p className="lead font-weight-normal">Изделия из кожи - Наши дизайнеры регулярно посещают знаменитые выставки в городе Милан (Италия),
-                            где перенимают международный опыт и черпают вдохновение для своих будущих коллекций. Стильные, созданные по традиционной технологии,
-                            аксессуары из натуральной кожи обладают особым шармом.!</p>
+                        <h1 className="display-4 font-weight-normal text-info">Изделия из кожи Comrade</h1>
+                        <p className="lead font-weight-normal">
+                            Здравствуйте, я Роман, помешан на коже, вручную шью аксессуары и сумки.
+                            Развиваю свою мастерскую с 19 лет. Создаю вещи без срока годности, даю на них пожизненную гарантию.
+                            Стильные и оригинальные, созданные по традиционной технологии,
+                            изделия из кожи Comrade обладают особым шармом и внешним видом!</p>
 
-                        <p className="lead font-weight-normal text-info"> © Изделия из кожи - «Уникально. Индивидуально. Безупречно.»</p>
+                        <p className="lead font-weight-normal text-info"> © Изделия из кожи Comrade - «Уникально. Индивидуально. Оригинально.»</p>
 
-                        <Button variant={"outline-info"} onClick={() => history.push(DEVICE_ROUTE)}>К нашим изделиям!</Button>
+                        <Button variant={"outline-info"} onClick={() => history.push(DEVICE_ROUTE)}>К изделиям!</Button>
                     </div>
                     <div className="product-device box-shadow d-none d-md-block"/>
                     <div className="product-device product-device-2 box-shadow d-none d-md-block"/>
                 </div>
 
-                <div className="d-md-flex flex-md-equal w-150 my-md-3 pl-md-3">
+                <div className="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
                     <div className="bg-light mr-md-3 pt-3 px-3 pt-md-2 px-md-3 text-center overflow-hidden">
-                        <div className="my-3 p-3">
-                            <h2 className="display-5">Коллекция "Royal"</h2>
-                            <p className="lead">«Грация.»</p>
+                        <div className="my-3 p-1">
+
                         </div>
                         <Col md={4}>
-                            <Image style={{width: 450, height:250}} src="https://makey-shop.by/assets/images/products/668/115-08-51.jpg"/>
+                            <Image style={{width: 450, height:450, objectFit:"cover"}} src="leather.jpg"/>
                             <br/>
                             <br/>
                         </Col>
 
-                        <Button variant={"outline-info"} href="https://www.microsoft.com/ru-by">Подробнее</Button>
+
 
                     </div>
                     <div className="bg-light mr-md-3 pt-3 px-3 pt-md-2 px-md-3 text-center overflow-hidden">
-                        <div className="my-3 py-3">
-                            <h2 className="display-5">Коллекция "Геометрия"</h2>
-                            <p className="lead">«Минимализм.»</p>
+                        <div className="my-3 p-1">
+
 
                         </div>
                         <Col md={4}>
-                            <Image style={{width: 450, height:250}} src="https://scontent-frt3-2.xx.fbcdn.net/v/t31.18172-8/26221186_1701938546535866_504527107699320395_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=9267fe&_nc_ohc=vJhg86qBKKwAX-SxXIo&_nc_ht=scontent-frt3-2.xx&oh=00_AfBB5GBIF5Sr1aId_-Oc9p7PDrZM3wNrT0Lb-bdnnMeHgg&oe=6473C6B7"/>
+                            <Image style={{width: 450, height:450, objectFit:"cover"}} src="leath.jpg"/>
                             <br/>
                             <br/>
                         </Col>
 
-                        <Button variant={"outline-info"} href="https://about.google/">Подробнее</Button>
+
                     </div>
                 </div>
 
                 <div className="d-md-flex flex-md-equal w-150 my-md-3 pl-md-3">
                     <div className="bg-light mr-md-3 pt-3 px-3 pt-md-2 px-md-3 text-center overflow-hidden">
-                        <div className="my-3 p-3">
-                            <h2 className="display-5">Коллекция "Венеция"</h2>
-                            <p className="lead">«Изящество.»</p>
+                        <div className="my-3 p-1">
+
                         </div>
                         <Col md={4}>
-                            <Image style={{width: 450, height:250}} src="https://static.insales-cdn.com/images/products/1/2931/155741043/large_p_ibjk_65Vc.jpg"/>
+                            <Image style={{width: 450, height:450, objectFit:"cover"}} src="rom.jpg"/>
                             <br/>
                             <br/>
                         </Col>
 
-                        <Button variant={"outline-info"} href="https://www.ableton.com/">Подробнее</Button>
+
 
                     </div>
                     <div className="bg-light mr-md-3 pt-3 px-3 pt-md-2 px-md-3 text-center overflow-hidden">
-                        <div className="my-3 py-3">
-                            <h2 className="display-5">Коллекция "Ар-Нуво"</h2>
-                            <p className="lead">Элегенатность.»</p>
+                        <div className="my-3 p-1">
+
 
                         </div>
                         <Col md={4}>
-                            <Image style={{width: 450, height:250}} src="http://metasalon.by/wp-content/uploads/2019/04/%D0%BC%D0%B0%D0%BA%D0%B5%D0%B9.jpg"/>
+                            <Image style={{width: 450, height:450, objectFit:"cover"}} src="caiman.jpg"/>
                             <br/>
                             <br/>
                         </Col>
 
-                        <Button variant={"outline-info"} href="https://www.alludo.com/en/">Подробнее</Button>
+
                     </div>
                 </div>
 

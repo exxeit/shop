@@ -16,7 +16,7 @@ const Admin = () => {
             <div className="card-deck mb-3 text-center mt-5">
             <div className="card mb-4 box-shadow">
                 <div className="card-header">
-                    <h4 className="my-0 font-weight-normal">Выбор типа</h4>
+                    <h4 className="my-0 font-weight-normal">Добавление типа</h4>
                 </div>
                 <div className="card-body">
                     <h1 className="card-title pricing-card-title"> <small className="text-dark">Тип</small></h1>
@@ -36,12 +36,12 @@ const Admin = () => {
 
             <div className="card mb-4 box-shadow">
                 <div className="card-header">
-                    <h4 className="my-0 font-weight-normal">Выбор цвета</h4>
+                    <h4 className="my-0 font-weight-normal">Добавление статуса товара</h4>
                 </div>
                 <div className="card-body">
-                    <h1 className="card-title pricing-card-title"> <small className="text-dark">Цвет</small></h1>
+                    <h1 className="card-title pricing-card-title"> <small className="text-dark">Статус</small></h1>
                     <ul className="list-unstyled mt-3 mb-4">
-                        <li>Например: красный, чёрный и др.)</li>
+                        <li>Например: в наличии или под заказ</li>
 
                     </ul>
                     <Button
@@ -56,10 +56,10 @@ const Admin = () => {
 
             <div className="card mb-4 box-shadow">
                 <div className="card-header">
-                    <h4 className="my-0 font-weight-normal">Выбор наименования</h4>
+                    <h4 className="my-0 font-weight-normal">Добавление изделия</h4>
                 </div>
                 <div className="card-body">
-                    <h1 className="card-title pricing-card-title"> <small className="text-dark">Наименование</small></h1>
+                    <h1 className="card-title pricing-card-title"> <small className="text-dark">Изделие</small></h1>
                     <ul className="list-unstyled mt-3 mb-4">
                         <li>Например: Сумка "Royal Black" и др.)</li>
 

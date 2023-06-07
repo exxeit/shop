@@ -250,8 +250,9 @@ const DevicePage = () => {
                                 : <h3 onClick={() => isAdmin && setEditPrice(true)} color="skyblue">Цена: {newPrice} руб.</h3>
                         }
                         <Button className='btn btn-outline-success text-lg-end' onClick={() => history.push(ORDER_MAKE + '/' + device.id)} variant={"outline-success"}>Оставить заявку</Button>
-                        <div onClick={toggleFavorite}>
-                            <img style={{maxHeight: 15}} src={isFavorite ? goldStar : star} alt="Favorite" />
+                        <div className="fav_container">    <p>Избранное</p>
+                            <div onClick={toggleFavorite}>        <img style={{maxHeight: 15}} src={isFavorite ? goldStar : star} alt="Favorite" />
+                            </div>
                         </div>
                     </Card>
                 </Col>
@@ -259,22 +260,22 @@ const DevicePage = () => {
             <Row className="d-flex flex-column m-3">
                 <h1>Характеристики</h1>
                 {device.info.sort((a, b) => a.id - b.id).map((info, index) =>
-                    <Row style={{background: index % 2 === 0 ? 'seagreen' : 'dark', padding: 8}}>
+                    <Row style={{background: index % 2 === 0 ? '#dce3f7' : 'dark', padding: 8}}>
                         <div className="info_row_container">
                             <div className="ingo_text">
                                 {
                                     editInfo == info.id
                                         ?  <>
                                             <div className="add_info_container">
-                                                <div>Title: <input value={newInfoTitle} onChange={handleInfoTitleChange} type={"text"}/></div>
-                                                <div>Description: <input value={newInfoDescription} onChange={handleInfoDescriptionChange} type={"text"}/></div>
+                                                <div>Хар-ка: <input value={newInfoTitle} onChange={handleInfoTitleChange} type={"text"}/></div>
+                                                <div>Описание: <input value={newInfoDescription} onChange={handleInfoDescriptionChange} type={"text"}/></div>
                                                 <div
                                                     className="save_btn"
                                                     onClick={() => handleChangeInfo(info.id)}
                                                     disabled={!newInfoTitle || !newInfoDescription}
                                                     style={{ opacity: newInfoTitle && newInfoDescription ? 1 : 0.5 }}
                                                 >
-                                                    <p>Save</p>
+                                                    <p>Сохранить</p>
                                                 </div>
                                             </div>
                                         </>

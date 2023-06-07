@@ -20,7 +20,7 @@ const CreateBrand = ({show, onHide}) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Добавить цвет
+                    Указать статус
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -28,7 +28,7 @@ const CreateBrand = ({show, onHide}) => {
                     <Form.Control
                         value={value}
                         onChange={e => setValue(e.target.value)}
-                        placeholder={"Введите цвет"}
+                        placeholder={"Введите статус изделия"}
                     />
                 </Form>
             </Modal.Body>

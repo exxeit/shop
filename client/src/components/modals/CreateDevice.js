@@ -79,7 +79,7 @@ const CreateDevice = observer(({show, onHide}) => {
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown className="mt-2 mb-2">
-                        <Dropdown.Toggle>{device.selectedBrand.name || "Выберите цвет"}</Dropdown.Toggle>
+                        <Dropdown.Toggle>{device.selectedBrand.name || "Выберите статус изделия"}</Dropdown.Toggle>
                         <Dropdown.Menu>
                             {device.brands.map(brand =>
                                 <Dropdown.Item
@@ -133,7 +133,7 @@ const CreateDevice = observer(({show, onHide}) => {
                     </div>
                     <hr/>
                     <Button
-                        variant={"outline-light"}
+                        variant={"outline-dark"}
                         onClick={addInfo}
                     >
                         Добавить новую характеристику
