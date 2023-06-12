@@ -33,13 +33,24 @@ services:
     container_name: api_db
     image: postgres:12
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       - POSTGRES_DB=ONline_store
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1111
     volumes:
       - db_data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - '8081:80'
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@pgadmin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    depends_on:
+      - db
 
 volumes:
   api_node_modules:
