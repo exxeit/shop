@@ -99,7 +99,8 @@ class UserController {
     async getMe(req, res, next) {
         const user = req.user
         const data = await User.findOne({where: {id: user.id}})
-        res.json({data})
+        data == null ? res.json({}) : res.json({data})
+        // res.json({data})
     }
 
     async sendReset(req, res, next) {

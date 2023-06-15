@@ -5,7 +5,7 @@ const {Device, Order} = require("../models/models");
 class OrderController {
     async create(req, res) {
         const { id, email } = req.body
-        const device = await Device.findOne({where: {id}});
+        const device = await Device.findOne({where: {id}})
         if (device) {
             const product_id = device.id
             const price = device.price

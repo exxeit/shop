@@ -3,21 +3,21 @@
     "username": "postgres",
     "password": "1111",
     "database": "ONline_store",
-    "host": "localhost",
+    "host": "api_db",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "1111",
     "database": "ONline_store",
-    "host": "localhost",
+    "host": "api_db",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "1111",
     "database": "ONline_store",
-    "host": "localhost",
+    "host": "api_db",
     "dialect": "postgres"
   }
 }

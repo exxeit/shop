@@ -32,9 +32,12 @@ export default class UserStore {
         return this._user.email
     }
     get photo() {
-        return this._user.photo
+        if (this._user) {
+            return this._user.photo
+        } else {
+            return null
+        }
     }
-
     get id() {
         return this._user.id
     }

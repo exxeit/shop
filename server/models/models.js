@@ -45,7 +45,7 @@ const Rating = sequelize.define('rating', {
 
 const Order = sequelize.define('order', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement:true},
-    price: {type: DataTypes.INTEGER, defaultValue: 0},
+    price: {type: DataTypes.DECIMAL(10, 2), defaultValue: 0},
     email: {type: DataTypes.STRING},
     product_id: {type: DataTypes.INTEGER},
 })
